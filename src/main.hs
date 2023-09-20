@@ -1,4 +1,3 @@
---import System.Random (uniformR)
 
 {--
     parameter 1: sequência do jogador 1;
@@ -8,8 +7,7 @@
                 acertos e erros do jogador 2;
 --}
 verify_sequence xs ys = do
-    val <- getLine
-    return val
+    putStrLn ("Teste")
 
 
 {--
@@ -23,7 +21,9 @@ player_2 n xs = do
     putStrLn "Digite uma tentativa de 4 dígitos: "
     line <- getLine
     if line <= xs then (putStrLn "Parabéns! Você acertou!!") 
-    else verify_sequence (xs) (line) player_2 (n-1) (xs) 
+    else do 
+        verify_sequence (xs) (line) 
+        player_2 (n-1) (xs) 
 
 
 {--
