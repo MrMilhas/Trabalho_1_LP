@@ -1,3 +1,16 @@
+import System.Random (getStdRandom, randomR, randomRIO, random, randomRs, newStdGen)    
+
+get_random_nums n0 = [a,b,c,d]
+    where
+        (a,n1) = randomR (0,9) n0
+        (b,n2) = randomR (0,9) n1
+        (c,n3) = randomR (0,9) n2
+        (d,n4) = randomR (0,9) n3
+
+random_num :: Int
+random_num = randomRIO (0,9)
+
+get_random_sequence = [random_num, random_num, random_num, random_num]
 
 {--
     parameter 1: sequência do jogador 1;
@@ -16,6 +29,7 @@ verify_sequence xs ys = do
     definition: Função que recebe a tentativa do jogador 2 e verifica
                 a corretude da sequência;
 --}
+player_2 :: (Eq t, Num t) => t -> String -> IO ()
 player_2 0 xs = putStrLn ("Número de tentativas esgotadas! Senha correta: "++ (show xs))
 player_2 n xs = do
     putStrLn "Digite uma tentativa de 4 dígitos: "
@@ -34,12 +48,8 @@ player_2 n xs = do
 game = do
     putStrLn "---------------------------------------------"
     putStrLn "----------------- Jogador 1 -----------------"
-    putStrLn "- Digite uma sequência de 4 dígitos: "
-    line <- getLine
-    putStrLn "- Digite o número de tentativas: "
-    n <- getLine
-    let num = read n :: Int
+    let line = get_random_sequence
     putStrLn ""
     putStrLn "---------------------------------------------"
     putStrLn "----------------- Jogador 2 -----------------"
-    player_2 num line
+    player_2 4 (show line)
