@@ -1,6 +1,6 @@
 {-
     Rodrigo Oliveira Ferrari - 201865567C
-    Daniel Muller Rezende - 
+    Daniel Muller Rezende - 202065020C
 -}
 
 import System.Random
